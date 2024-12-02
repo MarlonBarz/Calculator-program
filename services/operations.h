@@ -2,10 +2,10 @@
 INFO: OPERATIONS functions
 */
 
-int sum(int value);
+int sum(int valueIns, int valueConst);
 
-int sub(int value);
+int sub(int valueIns, int valueConst);
 
-int mult(int value);
+int mult(int valueIns, int valueConst);
 
-int res(int value, int restOf);
+int res(int valueIns, int valueConst);

@@ -5,7 +5,7 @@
 
 // Dynamic Paging
 char * configPag(int size, char *content){
-    printf("\n\n******************************* START configPag - paging_impl *******************************\n\n");
+    //printf("\n\n******************************* START configPag - paging_impl *******************************\n\n");
 
     //Check before start
     if(size < 50)
@@ -25,7 +25,7 @@ char * configPag(int size, char *content){
     // Allocazione della memoria per il risultato finale
     char *result = (char *) malloc(sizeof(char) * (height * lastPosRow + 1)); // +1 per il terminatore
     if (!result) {
-        printf("Errore: allocazione memoria fallita per la variabile RESULT\n");
+        //printf("Errore: allocazione memoria fallita per la variabile RESULT\n");
         return NULL;
     }
     result[0] = '\0'; // Init result
@@ -35,7 +35,7 @@ char * configPag(int size, char *content){
         // Allocazione della memoria per la riga in uso
         char *row = (char *)malloc(sizeof(char) * (lastPosRow + 1)); // +1 per il terminatore '\0'
         if (!row) {
-            printf("Errore: allocazione memoria fallita per la variabile ROW\n");
+            //printf("Errore: allocazione memoria fallita per la variabile ROW\n");
             free(result);
             return NULL;
         }
@@ -43,7 +43,7 @@ char * configPag(int size, char *content){
 
         // PART 1: This part set the first row
         if(i == 0){
-            printf("START configPag {PART 1} - paging_impl\n");
+            //printf("START configPag {PART 1} - paging_impl\n");
             for(int j = 0; j < lastPosRow + 1; j++){
 
                 if(j == 0)
@@ -55,12 +55,12 @@ char * configPag(int size, char *content){
                 if(j > 0 && j <= lastCharRow - 1)
                     *(row + j) = (char)196;
             }
-            printf("END configPag {PART 1} - paging_impl\n");
+            //printf("END configPag {PART 1} - paging_impl\n");
         }
 
         // PART 2: This part set the last row
         if(i == lastPosCol){
-            printf("START configPag {PART 2} - paging_impl\n");
+            //printf("START configPag {PART 2} - paging_impl\n");
             for(int j = 0; j < lastPosRow + 1; j++){
                 if(j == 0)
                     *(row + j) = (char)192;
@@ -71,12 +71,12 @@ char * configPag(int size, char *content){
                 if(j > 0 && j <= lastCharRow - 1)
                     *(row + j) = (char)196;
             }
-            printf("END configPag {PART 2} - paging_impl\n");
+            //printf("END configPag {PART 2} - paging_impl\n");
         }
 
         //PART 3: I want couple rows without text. Visual utility for user
         if(i == 1 || i == lastPosCol - 1){
-            printf("START configPag {PART 3} - paging_impl\n");
+            //printf("START configPag {PART 3} - paging_impl\n");
             for(int j = 0; j < lastPosRow + 1; j++){
                 if(j == 0 || j == size - 1)
                     *(row + j) = (char)179;
@@ -84,12 +84,12 @@ char * configPag(int size, char *content){
                 if(j > 0 && j <= lastCharRow - 1)
                     *(row + j) = (char)32;
             }
-            printf("END configPag {PART 3} - paging_impl\n");
+            //printf("END configPag {PART 3} - paging_impl\n");
         }   
 
         // PART 4: This part set the content of my Pag. This is the most complicated of 4
         if(i > 1 && i < lastPosCol - 1){
-            printf("START configPag {PART 4} - paging_impl\n");
+            //printf("START configPag {PART 4} - paging_impl\n");
             for(int j = 0; j < lastPosRow + 1; j++){
 
                 if(j == 0 || j == size - 1)
@@ -109,7 +109,7 @@ char * configPag(int size, char *content){
                     }
                 }
             }
-            printf("END configPag {PART 4} - paging_impl\n");
+            //printf("END configPag {PART 4} - paging_impl\n");
         }
 
         *(row + size) = '\n';   // Add a newline character
@@ -134,10 +134,10 @@ char * configPag(int size, char *content){
         result[m] = '\0';
 
         //Log row to check result
-        printf("Vediamo RESULT:\n");
-        printf("%s\n", result);
+        //printf("Vediamo RESULT:\n");
+        //printf("%s\n", result);
         free(row);
     }
-    printf("\n\n******************************* END configPag - paging_impl *******************************\n\n");
+    //printf("\n\n******************************* END configPag - paging_impl *******************************\n\n");
     return result;
 };

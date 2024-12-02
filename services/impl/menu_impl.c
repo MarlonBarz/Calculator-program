@@ -5,8 +5,8 @@
 
 char* showMenu(){
     char *menuText = "Benvenuto! Indicami quale operazione vorresti effettuare: 1)Somma 2)Sottrazione 3)Moltiplicazione 4)Modulo 5)Esci";
-    char *noText = "";
+    //char *noText = "";
     return configPag(0, menuText);
     free(menuText);
-    free(noText);
+    //free(noText);
 }
